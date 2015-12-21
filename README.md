@@ -27,6 +27,8 @@ This should be a simple welcome page that says Welcome to Tim's, we're working o
 Tester
 ------
 
+This should be the general flow that a tester walks through when they come to give some feedback on some delicious hot sauce.
+
 ### Bottle Entry
 
 The first thing we need to do is submit a bottle, so the first screen should simply be a textfield to take the ID of the bottle.  This screen should be cryptic and cool looking.
@@ -41,6 +43,8 @@ Some real huggy-feely thanks page where Tim bares his soul to the feedbacker.
 
 Admin
 -----
+
+This is Tim's playground.  Something he can use to play around with this whole thing!
 
 ### Overview
 
@@ -65,6 +69,8 @@ These should really only be the Admin users...like Tim. Nothing crazy about 'em,
 Recipe
 ------
 
+This represents all information about the recipes Tim will be making, and tracking the batches he makes, as he sends sauce out to testers!
+
 1. Name (required, alpha and whitespace only)
 2. Created Date (required, unix time)
 2. Ingredients (Must have at least one. Each ingredient must have an ingredient, quantity, and unit).
@@ -74,6 +80,8 @@ Recipe
 Batch
 -----
 
+This represents one batch of a recipe.  These will be sent out to testers.
+
 1. ID (required, some unique ID)
 1. Recipe (required)
 2. Notes (not required, free entry, just don't allow empty garbage)
@@ -81,6 +89,8 @@ Batch
 
 Bottle
 ------
+
+This is a single bottle, which will go to a single tester and ideally will get feedback.
 
 1. Batch (required)
 2. Hash  (unique ID we generate, required)
@@ -90,6 +100,8 @@ Bottle
 Tester
 ------
 
+The people who will be doing the testing.  They may get several bottles to test.
+
 1. Nickname (required, alpha and whitespace only, should be casual...what Tim would actually call this person).
 2. Email address (required, email format)
 3. Mailing Address (Just take this as-is and hope Tim doesn't fuck it up).
@@ -97,6 +109,8 @@ Tester
 
 Feedback
 --------
+
+This is the information that a tester leaves about a bottle.
 
 1. Bottle (required)
 2. Flavor (required, 1-10)
