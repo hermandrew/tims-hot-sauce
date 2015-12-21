@@ -1,0 +1,23 @@
+{
+  "name": "ths",
+  "version": "1.0.0",
+  "description": "The one and only Tim's Hot Sauce web app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hermandrew/tims-hot-sauce.git"
+  },
+  "author": "Andrew Herman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hermandrew/tims-hot-sauce/issues"
+  },
+  "homepage": "https://www.timshotsauce.com",
+  "dependencies": {
+    "aws-sdk": "^2.2.25",
+    "express": "^4.13.3"
+  }
+}
