@@ -18,7 +18,8 @@
   "homepage": "https://www.timshotsauce.com",
   "dependencies": {
     "aws-sdk": "^2.2.25",
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "chai": "^3.4.1",
