@@ -1,4 +1,5 @@
-var dynamodb_client = require('./../lib/dynamodb_client').dynamodb_client;
+var dynamodb_client = require('./../lib/dynamodb_client').dynamodb_client,
+    validator = require('validate.js');
 
 /**
  * Lists all the users that are in the table.
@@ -67,4 +68,34 @@ exports.delete = function(email_address, callback) {
   dynamodb_client.delete(params, function(err, data) {
     callback(err, data.Attributes);
   });
+};
+
+/**
+ * Validates this model for correctness.
+ *
+ * @param {object} user The user object being validated.
+ */
+exports.validate = function(user) {
+  var constraints = {
+    email: {
+      presence: true,
+      email: true
+    },
+    password: {
+      presence: true,
+    },
+    nickname: {
+      presence: true,
+      format: {
+        pattern: '[a-zA-Z]+',
+        message: '^must only contain letters.'
+      },
+      length: {
+        minimum: 3,
+        maximum: 30
+      }
+    }
+  };
+
+  return validator(user, constraints);
 };
