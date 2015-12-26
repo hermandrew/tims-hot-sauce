@@ -26,7 +26,7 @@ function delete_all_objects(done) {
   });
 }
 
-describe('Requests to the path /users', function() {
+describe('Requests to the path /user', function() {
 
   before(function(done) {
     delete_all_objects(done);
@@ -60,19 +60,19 @@ describe('Requests to the path /users', function() {
     describe('#GET', function() {
       it('Returns a 200 status code', function(done) {
         request(app)
-          .get('/users')
+          .get('/user')
           .expect(200, done);
       });
 
       it('Returns JSON', function(done) {
         request(app)
-          .get('/users')
+          .get('/user')
           .expect('Content-Type', /json/, done);
       });
 
       it('Returns all records', function(done) {
         request(app)
-          .get('/users')
+          .get('/user')
           .expect(function(res) {
             if(res.body.length !== 3) throw new Error('Did not retrieve all users.');
           })
@@ -83,28 +83,28 @@ describe('Requests to the path /users', function() {
     describe('#POST', function() {
       it(('Returns a 201'), function(done) {
         request(app)
-          .post('/users')
+          .post('/user')
           .send({email:'email@email.com', password: 'password', nickname: 'nickname'})
           .expect(201, done);
       });
 
       it('Returns JSON', function(done) {
         request(app)
-          .get('/users')
+          .get('/user')
           .send({email:'email@email.com', password: 'password', nickname: 'nickname'})
           .expect('Content-Type', /json/, done);
       });
 
       it('Returns 400 if parameters are invalid', function(done) {
         request(app)
-          .post('/users')
+          .post('/user')
           .send({email: 'email', password: '1', nickname: 'nick name'})
           .expect(400, done);
       });
 
       it('Returns 409 if user already exists', function(done) {
         request(app)
-          .post('/users')
+          .post('/user')
           .send({email: 'test0@email.com', password: 'password', nickname: 'nickname'})
           .expect(409, done);
       });
@@ -116,7 +116,7 @@ describe('Requests to the path /users', function() {
 
       it('Returns 200 with the object if it exists.', function(done) {
         request(app)
-          .get('/users/test0@email.com')
+          .get('/user/test0@email.com')
           .expect(function(response) {
             var this_user = response.body;
             if(user.validate(this_user)) throw new Error('Returned object is invalid');
@@ -126,7 +126,7 @@ describe('Requests to the path /users', function() {
 
       it('Returns 404 if the object does not yet exist', function(done) {
         request(app)
-          .get('/users/notthere@email.com')
+          .get('/user/notthere@email.com')
           .expect(404, done);
       });
     });
@@ -142,21 +142,21 @@ describe('Requests to the path /users', function() {
 
       it('Returns 409 if the URL param doesn\'t match the body param', function(done) {
         request(app)
-          .put('/users/test2@email.com')
+          .put('/user/test2@email.com')
           .send({email: 'test3@email.com', password: 'password', nickname: 'nickname'})
           .expect(409, done);
       });
 
       it('Returns 400 if the user submitted is invalid', function(done) {
         request(app)
-          .put('/users/test2@email.com')
+          .put('/user/test2@email.com')
           .send({email: 'test2@email.com', password: 'p', nickname: 'nick name'})
           .expect(400, done);
       });
 
       it('Returns 200 when all data is valid and the user exists', function(done) {
         request(app)
-          .put('/users/test2@email.com')
+          .put('/user/test2@email.com')
           .send({email: 'test2@email.com', password: 'password', nickname: 'nickname'})
           .expect(200, done);
       });

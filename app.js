@@ -5,8 +5,8 @@ var express = require('express'),
 app.use(express.static('public'));
 app.use(body_parser.json());
 
-var users = require('./controllers/user.js');
-app.use('/users', users);
+var user = require('./controllers/user.js');
+app.use('/user', user);
 
 module.exports = app;
 

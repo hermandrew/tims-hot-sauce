@@ -39,6 +39,7 @@ router.route('/:email')
     else if (email != new_user.email) response.status(409).json({error: 'URL does not match body params'});
     else user.get(email, function(err, got_user) {
       if (err) response.sendStatus(500);
+      else if (!got_user) response.sendStatus(404);
       else user.put(new_user, function(err, data) {
         if(err) response.sendStatus(500);
         else response.sendStatus(200);
