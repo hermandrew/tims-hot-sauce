@@ -1,6 +1,5 @@
 var request = require('supertest'),
     dynamodb_client = require('../lib/dynamodb_client.js').dynamodb_client,
-    user_controller = require('./../controllers/user.js'),
     app = require('./../app.js'),
     user = require('./../models/user.js');
 

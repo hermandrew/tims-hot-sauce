@@ -16,6 +16,19 @@ The behavior of this site should basically serve the following purposes...
 
 In order to pull this off, let's break down the whole thing.
 
+- [Pages](#pages)
+  - [Welcome](#welcome)
+  - [Tester](#tester)
+  - [Admin](#admin)
+- [Model](#model)
+  - [User](#user)
+  - [Recipe](#recipe)
+  - [Batch](#batch)
+  - [Bottle](#bottle)
+  - [Tester](#tester)
+  - [Feedback](#feedback)
+- [API](#api)
+
 Pages
 =====
 
