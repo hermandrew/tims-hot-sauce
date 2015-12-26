@@ -82,8 +82,11 @@ Batch
 
 This represents one batch of a recipe.  These will be sent out to testers.
 
-1. ID (required, some unique ID)
-1. Recipe (required)
+For some clarity, the recipe name and, with the created date of the batch, give the batch a unique ID.  The recipe created date allows us to look up the recipe from the batch.
+
+1. Recipe name (required)
+1. Created Date (required)
+2. Recipe created_date (required)
 2. Notes (not required, free entry, just don't allow empty garbage)
 3. Bottles (not initially required, these can be added later)
 
@@ -142,13 +145,13 @@ Lists all users
 
 Create a user
 
-### GET /:nickname
+### GET /:email
 
-Gets a user by nickname
+Gets a user by email
 
-### DELETE /:nickname
+### DELETE /:email
 
-Deletes a user by nickname
+Deletes a user by email
 
 /recipe
 -------
