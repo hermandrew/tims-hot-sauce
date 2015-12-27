@@ -31,4 +31,29 @@ router.route('/')
     });
   });
 
+router.route('/:recipe_name/:created_date')
+  .delete(function(request, response) {
+    var recipe_name = request.params.recipe_name,
+        created_date = Number(request.params.created_date);
+
+    batch.get(recipe_name, created_date, function(err, got_batch) {
+      if(err) response.sendStatus(500);
+      else if (!got_batch) response.sendStatus(404);
+      else batch.delete(recipe_name, created_date, function(err, data) {
+        if(err) response.sendStatus(500);
+        else recipe.get(recipe_name, got_batch.recipe_created_date, function(err, got_recipe) {
+          if (err) response.sendStatus(500);
+          else if (!got_recipe) response.sendStatus(200);
+          else {
+            got_recipe.batches.pop(created_date);
+            recipe.put(got_recipe, function(err, data) {
+              if (err) response.sendStatus(500);
+              else response.sendStatus(200);
+            });
+          }
+        });
+      });
+    });
+  });
+
 module.exports = router;

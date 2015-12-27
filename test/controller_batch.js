@@ -41,7 +41,7 @@ var existing_recipe = {
   created_date: 1451104366,
   ingredients: [ 'ingredients one', 'super ingredient 2' ],
   directions: [ 'directions uno', 'directions dos' ],
-  batches: ['1234', '1235']
+  batches: ['1234', '1451106666']
 };
 
 describe('Requests to the path /batch', function() {
@@ -55,11 +55,11 @@ describe('Requests to the path /batch', function() {
   });
 
   afterEach(function(done) {
-
     recipe.delete(existing_recipe.name, existing_recipe.created_date, function(err, data) {
       batch.list(function(err, data) {
         var total_count = data.length,
             finished_count = 0;
+        if (total_count === 0) done();
         for(var i=0; i<total_count; i++) {
           batch.delete(data[i].recipe_name, data[i].created_date, function(err, data) {
             finished_count++;
@@ -112,6 +112,37 @@ describe('Requests to the path /batch', function() {
             })
             .end(done);
         });
+      });
+    });
+  });
+
+
+  describe('/batch/:recipe_name/:created_date', function() {
+    describe('#DELETE', function() {
+
+      it('Returns a 404 if the batch does not exist.', function(done) {
+        request(app)
+          .delete('/batch/doesnt_exist/1234321')
+          .expect(404, done);
+      });
+
+      it('Returns a 200 if the batch exists, and successfully deletes.', function(done) {
+        request(app)
+          .delete('/batch/' + existing_batch.recipe_name + '/' + existing_batch.created_date)
+          .expect(200, done);
+      });
+
+      it('Successfully deleted batches are removed from the recipe', function(done) {
+        request(app)
+          .delete('/batch/' + existing_batch.recipe_name + '/' + existing_batch.created_date)
+          .expect(200)
+          .expect(function(response) {
+            recipe.get(existing_batch.recipe_name, existing_batch.recipe_created_date, function(err, got_batch) {
+              expect(got_batch.batches).not.to.contain(existing_batch.created_date);
+              expect(got_batch.batches.length).to.equal(1);
+            });
+          })
+          .end(done);
       });
     });
   });
