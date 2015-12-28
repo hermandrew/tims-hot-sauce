@@ -6,7 +6,8 @@ var express = require('express'),
 
 var user = require('./controllers/user.js'),
     recipe = require('./controllers/recipe.js'),
-    batch = require('./controllers/batch.js');
+    batch = require('./controllers/batch.js'),
+    bottle = require('./controllers/bottle.js');
 
 app.use(express.static('public'));
 app.use(body_parser.json());
@@ -14,6 +15,7 @@ app.use(body_parser.json());
 app.use('/user', user);
 app.use('/recipe', recipe);
 app.use('/batch', batch);
+app.use('/bottle', bottle);
 
 module.exports = app;
 

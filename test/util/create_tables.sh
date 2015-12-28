@@ -51,11 +51,11 @@ aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-
 '{
   "TableName": "Bottle",
   "KeySchema": [
-    { "AttributeName": "hash", "KeyType": "HASH" },
+    { "AttributeName": "recipe_name", "KeyType": "HASH" },
     { "AttributeName": "created_date", "KeyType": "RANGE" }
   ],
   "AttributeDefinitions": [
-    { "AttributeName": "hash", "AttributeType": "S" },
+    { "AttributeName": "recipe_name", "AttributeType": "S" },
     { "AttributeName": "created_date", "AttributeType": "N" }
   ],
   "ProvisionedThroughput": {

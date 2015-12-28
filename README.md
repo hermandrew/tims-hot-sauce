@@ -114,10 +114,13 @@ Bottle
 
 This is a single bottle, which will go to a single tester and ideally will get feedback.
 
-1. Batch (required)
-2. Hash  (unique ID we generate, required)
-3. Tester (Not required, because bottles can be "waiting" for testers.  But it should be populated at some point.
-4. Feedback (Same validation as Tester)
+1. Recipe Name (required)
+2. Created Date (required)
+3. Recipe Created Date (required, to link back to the recipe)
+4. Batch Created Date (required, to link back to the batch)
+5. Hash  (unique ID we generate, required)
+6. Tester (Not required, because bottles can be "waiting" for testers.  But it should be populated at some point.
+7. Feedback (Same validation as Tester)
 
 Tester
 ------
