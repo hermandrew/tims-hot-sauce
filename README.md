@@ -28,6 +28,12 @@ In order to pull this off, let's break down the whole thing.
   - [Tester](#tester)
   - [Feedback](#feedback)
 - [API](#api)
+  - [/user](#user-1)
+  - [/recipe](#recipe-1)
+  - [/batch](#batch-1)
+  - [/bottle](#bottle-1)
+  - [/tester](#tester-1)
+  - [/feedback](#feedback-1)
 
 Pages
 =====
