@@ -8,7 +8,7 @@ var dynamodb_client = require('./../lib/dynamodb_client').dynamodb_client,
  */
 exports.list = function(callback) {
   var params = {
-    TableName: 'User',
+    TableName: process.env.NODE_ENV + '_user',
   };
 
   dynamodb_client.scan(params, function(err, data) {
@@ -24,14 +24,14 @@ exports.list = function(callback) {
  */
 exports.get = function(email_address, callback) {
   var params = {
-    TableName: 'User',
+    TableName: process.env.NODE_ENV + '_user',
     Key: {
       email: email_address
     }
   };
 
   dynamodb_client.get(params, function(err, data) {
-    callback(err, data.Item);
+    callback(err, data ? data.Item : null);
   });
 };
 
@@ -43,7 +43,7 @@ exports.get = function(email_address, callback) {
  */
 exports.put = function(user, callback) {
   var params = {
-    TableName: 'User',
+    TableName: process.env.NODE_ENV + '_user',
     Item: user
   };
 
@@ -58,7 +58,7 @@ exports.put = function(user, callback) {
  */
 exports.delete = function(email_address, callback) {
   var params = {
-    TableName: 'User',
+    TableName: process.env.NODE_ENV + '_user',
     Key: {
       email: email_address
     },

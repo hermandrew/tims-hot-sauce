@@ -1,7 +1,8 @@
 var request = require('supertest'),
     dynamodb_client = require('../lib/dynamodb_client.js').dynamodb_client,
     app = require('./../app.js'),
-    user = require('./../models/user.js');
+    user = require('./../models/user.js'),
+    expect = require('chai').expect;
 
 function delete_all_objects(done) {
   var finished_count = 0;
@@ -85,6 +86,18 @@ describe('Requests to the path /user', function() {
           .post('/user')
           .send({email:'email@email.com', password: 'password', nickname: 'nickname'})
           .expect(201, done);
+      });
+
+      it(('Creates a user'), function(done) {
+        request(app)
+          .post('/user')
+          .send({email:'email@email.com', password: 'password', nickname: 'nickname'})
+          .expect(function(response) {
+            user.get('email@email.com', function(err, got_user) {
+              expect(got_user).is.an('Object');
+            });
+          })
+          .end(done);
       });
 
       it('Returns JSON', function(done) {

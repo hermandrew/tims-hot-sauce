@@ -1,6 +1,6 @@
 aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-json \
 '{
-  "TableName": "test_user",
+  "TableName": "local_user",
   "KeySchema": [
     { "AttributeName": "email", "KeyType": "HASH" }
   ],
@@ -15,7 +15,7 @@ aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-
 
 aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-json \
 '{
-  "TableName": "test_recipe",
+  "TableName": "local_recipe",
   "KeySchema": [
     { "AttributeName": "name", "KeyType": "HASH" },
     { "AttributeName": "created_date", "KeyType": "RANGE" }
@@ -32,7 +32,7 @@ aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-
 
 aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-json \
 '{
-  "TableName": "test_batch",
+  "TableName": "local_batch",
   "KeySchema": [
     { "AttributeName": "recipe_name", "KeyType": "HASH" },
     { "AttributeName": "created_date", "KeyType": "RANGE" }
@@ -49,7 +49,7 @@ aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-
 
 aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-json \
 '{
-  "TableName": "test_bottle",
+  "TableName": "local_bottle",
   "KeySchema": [
     { "AttributeName": "recipe_name", "KeyType": "HASH" },
     { "AttributeName": "created_date", "KeyType": "RANGE" }
@@ -66,7 +66,7 @@ aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-
 
 aws dynamodb "$@" --endpoint-url http://localhost:8000 create-table --cli-input-json \
 '{
-  "TableName": "test_tester",
+  "TableName": "local_tester",
   "KeySchema": [
     { "AttributeName": "nickname", "KeyType": "HASH" }
   ],

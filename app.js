@@ -17,5 +17,7 @@ app.use('/recipe', recipe);
 app.use('/batch', batch);
 app.use('/bottle', bottle);
 
+console.log('ENV: ', process.env.NODE_ENV);
+
 module.exports = app;
 

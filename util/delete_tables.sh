@@ -1,0 +1,5 @@
+aws dynamodb "$@" --endpoint-url http://localhost:8000 delete-table --table-name 'local_user'
+aws dynamodb "$@" --endpoint-url http://localhost:8000 delete-table --table-name 'local_recipe'
+aws dynamodb "$@" --endpoint-url http://localhost:8000 delete-table --table-name 'local_batch'
+aws dynamodb "$@" --endpoint-url http://localhost:8000 delete-table --table-name 'local_bottle'
+aws dynamodb "$@" --endpoint-url http://localhost:8000 delete-table --table-name 'local_tester'

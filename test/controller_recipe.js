@@ -1,6 +1,7 @@
 var request = require('supertest'),
     app = require('./../app.js'),
-    recipe = require('./../models/recipe.js');
+    recipe = require('./../models/recipe.js'),
+    expect = require('chai').expect;
 
 var existing_recipe = {
   name: 'testname',
@@ -54,6 +55,19 @@ describe('Requests to the path /recipe', function() {
           .post('/recipe')
           .send(new_recipe)
           .expect(201, done);
+      });
+
+      it('Creates a recipe', function(done) {
+        request(app)
+          .post('/recipe')
+          .send(new_recipe)
+          .expect(function(response) {
+            recipe.get(new_recipe.name, new_recipe.created_date, function(err, data) {
+              expect(err).is.null;
+              expect(data).is.an('Object');
+            });
+          })
+          .end(done);
       });
 
     });

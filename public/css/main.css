@@ -111,6 +111,17 @@ svg {
   margin: auto;
 }
 
+.container {
+  display: block;
+  margin: auto;
+  max-width: 800px;
+}
+
+.inline-block {
+  display: inline-block;
+  margin: auto;
+}
+
 .svg-container {
   display: block;
   margin: auto;
@@ -123,9 +134,18 @@ svg {
   bottom: -50px;
 }
 
+.center {
+  display: inline-block;
+  margin: auto;
+}
 
+.left-quarter {
+  width: 33%;
+}
 
-
+.right-three-quarters {
+  width: 67%;
+}
 
 
 

@@ -3,7 +3,7 @@ var dynamodb_client = require('./../lib/dynamodb_client').dynamodb_client,
 
 exports.get = function(name, created_date, callback) {
   var params = {
-    TableName: 'Recipe',
+    TableName: process.env.NODE_ENV + '_recipe',
     Key: {
       name: name,
       created_date: created_date
@@ -17,7 +17,7 @@ exports.get = function(name, created_date, callback) {
 
 exports.put = function(recipe, callback) {
   var params = {
-    TableName: 'Recipe',
+    TableName: process.env.NODE_ENV + '_recipe',
     Item: recipe
   };
 
@@ -26,7 +26,7 @@ exports.put = function(recipe, callback) {
 
 exports.delete = function(name, created_date, callback) {
   var params = {
-    TableName: 'Recipe',
+    TableName: process.env.NODE_ENV + '_recipe',
     Key: {
       name: name,
       created_date: created_date
